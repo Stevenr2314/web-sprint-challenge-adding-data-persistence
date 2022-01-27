@@ -6,6 +6,7 @@ const getAll = () => {
 
 const getById = id => {
     return db('resources').where({resource_id: id})
+        .then(resources => resources[0])
 }
 
 const create = resource => {

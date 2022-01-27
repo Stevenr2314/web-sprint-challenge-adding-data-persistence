@@ -10,4 +10,8 @@ server.use('/api/resources', resourcesRouter)
 server.use('/api/projects', projectsRouter)
 server.use('/api/tasks', tasksRouter)
 
+server.use((err, req, res, next) => {
+    res.status(err.status || 500).json({message: `${err.message}`})
+    next()
+  })
 module.exports = server
